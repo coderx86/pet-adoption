@@ -34,7 +34,50 @@ const loadCategoryPets = (petsCategory) => {
         loadingSpinner(false);
     });
 };
+const loadDetails = (petId) => {
+    fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
+    .then((res) => res.json())
+    .then((data) => displayDetail(data.petData))
+    .catch((error) => console.log("error!", error));
+};
 
+const displayDetail = (info) =>{
+    const modalContainer = document.getElementById('my_modal_1');
+    modalContainer.innerHTML = `
+<div class="modal-box bg-white rounded-xl">
+    <div>
+        <div>
+            <img class="h-[220px] w-full rounded-lg object-cover mb-2" src="${info.image}" alt="">
+        </div>
+        <div>
+            <div>
+                <h2 class="text-2xl font-bold">${info.pet_name}</h2>
+                <div class="flex gap-10">
+                    <div>
+                        <p class="text-[#131313b3]"><i class="fa-solid fa-shapes"></i> Breed: ${info.breed === undefined || info.breed === null ? 'Not available' : info.breed}</p>
+                        <p class="text-[#131313b3]"><i class="fa-solid fa-venus-mars"></i> Gender: ${info.gender === undefined || info.gender === null ? 'Unknown' : info.gender}</p>
+                        <p class="text-[#131313b3]"><i class="fa-solid fa-venus-mars"></i> Vaccinated status: ${info.vaccinated_status === undefined || info.vaccinated_status === null ? 'Not available' : info.vaccinated_status}</p>
+                    </div>
+                    <div>
+                        <p class="text-[#131313b3]"><i class="fa-solid fa-calendar-days"></i> Birth: ${info.date_of_birth === undefined || info.date_of_birth === null ? 'Not available' : info.date_of_birth}</p>
+                        <p class="text-[#131313b3]"><i class="fa-solid fa-dollar-sign"></i> Price: ${info.price}$</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-2">
+            <div>
+                <h2 class="font-semibold mb-2">Details Information</h2>
+                <p class="text-[#131313b3]">${info.pet_details}</p>
+            </div>
+        </div>
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn btn-outline btn-success bg-[#0e7a811a] w-full mt-3">Close</button>
+      </form>
+    </div>
+</div>
+    `
+}
 const loadingSpinner = (show) => {
     if (show) {
         document.getElementById('loading').classList.remove('hidden');
@@ -92,7 +135,7 @@ const displayPets = (petImages) => {
             <div class="flex justify-between">
                 <button class="btn btn-outline btn-success"><i class="fa-regular fa-thumbs-up"></i></button>
                 <button class="btn btn-outline btn-success font-bold">Adopt</button>
-                <button class="btn btn-outline btn-success font-bold">Details</button>
+                <button class="btn btn-outline btn-success font-bold" onclick="loadDetails(${item.petId}); my_modal_1.showModal()">Details</button>
             </div>
         </div>
         `;
