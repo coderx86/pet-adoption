@@ -13,18 +13,37 @@ const loadPets = () => {
     })
     .catch((error) => console.log("error!"));
 }
-const loadCategoryPets = (petsCategory) =>{
-    fetch(`https://openapi.programming-hero.com/api/peddy/category/${petsCategory}`)
-    .then((res) => res.json())
-    .then(data => {
-        removeActiveClass();
-        const activeBtn = document.getElementById(`btn-${petsCategory}`);
-        activeBtn.classList.add('rounded-full',  'bg-[#0e7a811a]', 'border-[#0E7A81]', 'border-2');
-        displayPets(data.data);
-    })
-    .catch((error) => console.log("error!"));
+const loadCategoryPets = (petsCategory) => {
+    loadingSpinner(true);
+    
+    const minimumDelay = new Promise((resolve) => {
+        setTimeout(resolve, 2000);
+    });
+
+    const apiCall = fetch(`https://openapi.programming-hero.com/api/peddy/category/${petsCategory}`)
+        .then((res) => res.json())
+        .then(data => {
+            removeActiveClass();
+            const activeBtn = document.getElementById(`btn-${petsCategory}`);
+            activeBtn.classList.add('rounded-full', 'bg-[#0e7a811a]', 'border-[#0E7A81]', 'border-2');
+            displayPets(data.data);
+        })
+        .catch((error) => console.log("error!", error));
+
+    Promise.all([minimumDelay, apiCall]).then(() => {
+        loadingSpinner(false);
+    });
 };
 
+const loadingSpinner = (show) => {
+    if (show) {
+        document.getElementById('loading').classList.remove('hidden');
+        document.getElementById('pets').classList.add('hidden');
+    } else {
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('pets').classList.remove('hidden');
+    }
+};
 const removeActiveClass = () => {
     const buttons = document.getElementsByClassName("btn-category");
     console.log(buttons);
@@ -46,12 +65,12 @@ const displayPets = (petImages) => {
     if (petImages.length == 0) {
         petsContainer.classList.remove("grid");
         petsContainer.innerHTML = `
-<div class="flex flex-col justify-center items-center bg-[#13131308] text-center rounded-3xl p-28">
-    <img src="images/error.webp" alt="">
-    <h1 class="font-extrabold text-4xl mt-6 mb-4">No Information Available</h1>
-    <p class="max-w-[760px] text-[#131313b3] mx-auto">It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
-        its layout. The point of using Lorem Ipsum is that it has a.</p>
-</div>
+        <div class="flex flex-col justify-center items-center bg-[#13131308] text-center rounded-3xl p-28">
+            <img src="images/error.webp" alt="">
+            <h1 class="font-extrabold text-4xl mt-6 mb-4">No Information Available</h1>
+            <p class="max-w-[760px] text-[#131313b3] mx-auto">It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
+             its layout. The point of using Lorem Ipsum is that it has a.</p>
+        </div>
         `;
       } else {
         petsContainer.classList.add("grid");
@@ -64,9 +83,9 @@ const displayPets = (petImages) => {
         <div>
             <div>
                 <h3 class="text-xl font-bold">${item.pet_name}</h3>
-                <p class="text-[#131313b3]"><i class="fa-solid fa-shapes"></i> Breed: ${item.breed}</p>
-                <p class="text-[#131313b3]"><i class="fa-solid fa-calendar-days"></i> Birth: ${item.date_of_birth}</p>
-                <p class="text-[#131313b3]"><i class="fa-solid fa-venus-mars"></i> Gender: ${item.gender}</p>
+                <p class="text-[#131313b3]"><i class="fa-solid fa-shapes"></i> Breed: ${item.breed === undefined || item.breed === null ? 'Not available' : item.breed}</p>
+                <p class="text-[#131313b3]"><i class="fa-solid fa-calendar-days"></i> Birth: ${item.date_of_birth === undefined || item.date_of_birth === null ? 'Not available' : item.date_of_birth}</p>
+                <p class="text-[#131313b3]"><i class="fa-solid fa-venus-mars"></i> Gender: ${item.gender === undefined || item.gender === null ? 'Unknown' : item.gender}</p>
                 <p class="text-[#131313b3]"><i class="fa-solid fa-dollar-sign"></i> Price: ${item.price}$</p>
                 <hr class="my-4">
             </div>
@@ -88,7 +107,7 @@ const displayCategories = (categories) => {
         const buttonContainer = document.createElement("div");
         buttonContainer.classList.add('flex');
         buttonContainer.innerHTML = `
-        <button id="btn-${item.category}" onclick="loadCategoryPets('${item.category}')" class="btn text-2xl font-bold btn-outline border-gray-400 h-20 w-[250px] mx-auto btn-category" id="btn-id-${item.category}">
+        <button id="btn-${item.category}" onclick="loadCategoryPets('${item.category}')" class="btn text-2xl font-bold btn-outline border-gray-400 h-20 w-[250px] mx-auto btn-category">
         <img src="${item.category_icon}" alt="">${item.category}s</button>
         `;
         categoriesId.append(buttonContainer);
@@ -101,7 +120,7 @@ const displayCategories = (categories) => {
     </div>
     `;
     document.getElementById('categoriesContainer').append(sortContainer);
-}
+};
 
 loadPets();
 loadCategories();
