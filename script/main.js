@@ -41,6 +41,23 @@ const loadDetails = (petId) => {
     .catch((error) => console.log("error!", error));
 };
 
+const showCountDown = (petId) => {
+    const button = document.getElementById(`pet_${petId}`);
+    const showTimer = document.getElementById('count-down');
+    showTimer.innerText = "3";
+    let timer = 3;
+    button.disabled = true;
+    const interval = setInterval(() => {
+        timer--;
+        if (timer > 0) {
+            showTimer.innerText = timer;
+        } else {
+            clearInterval(interval);
+            document.getElementById('my_modal_2').close();
+            button.innerText = "Adopted";
+        }
+    }, 1000);
+}
 const imageInserter = (link) => {
     console.log('clicked');
     const imageContainer = document.createElement('div');
@@ -142,7 +159,7 @@ const displayPets = (petImages) => {
             </div>
             <div class="flex justify-between">
                 <button class="btn btn-outline btn-success" onclick="imageInserter('${item.image}')"><i class="fa-regular fa-thumbs-up"></i></button>
-                <button class="btn btn-outline btn-success font-bold">Adopt</button>
+                <button class="btn btn-outline btn-success font-bold" onclick = "showCountDown(${item.petId}); my_modal_2.showModal()" id="pet_${item.petId}">Adopt</button>
                 <button class="btn btn-outline btn-success font-bold" onclick="loadDetails(${item.petId}); my_modal_1.showModal()">Details</button>
             </div>
         </div>
