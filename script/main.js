@@ -41,6 +41,14 @@ const loadDetails = (petId) => {
     .catch((error) => console.log("error!", error));
 };
 
+const imageInserter = (link) => {
+    console.log('clicked');
+    const imageContainer = document.createElement('div');
+    imageContainer.innerHTML = `
+        <img src="${link}" alt="Pet Image" class="aspect-square object-cover rounded-lg">
+    `;
+    document.getElementById('liked-container').append(imageContainer); 
+};
 const displayDetail = (info) =>{
     const modalContainer = document.getElementById('my_modal_1');
     modalContainer.innerHTML = `
@@ -133,7 +141,7 @@ const displayPets = (petImages) => {
                 <hr class="my-4">
             </div>
             <div class="flex justify-between">
-                <button class="btn btn-outline btn-success"><i class="fa-regular fa-thumbs-up"></i></button>
+                <button class="btn btn-outline btn-success" onclick="imageInserter('${item.image}')"><i class="fa-regular fa-thumbs-up"></i></button>
                 <button class="btn btn-outline btn-success font-bold">Adopt</button>
                 <button class="btn btn-outline btn-success font-bold" onclick="loadDetails(${item.petId}); my_modal_1.showModal()">Details</button>
             </div>
