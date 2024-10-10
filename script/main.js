@@ -9,7 +9,8 @@ const loadPets = () => {
     .then((res) => res.json())
     .then((data) => {
         displayPets(data.pets);
-        likedDisplayPets();
+        likedDisplayPetsContainer();
+        sorting(data.pets);
     })
     .catch((error) => console.log("error!"));
 }
@@ -27,6 +28,7 @@ const loadCategoryPets = (petsCategory) => {
             const activeBtn = document.getElementById(`btn-${petsCategory}`);
             activeBtn.classList.add('rounded-full', 'bg-[#0e7a811a]', 'border-[#0E7A81]', 'border-2');
             displayPets(data.data);
+            sorting(data.data);
         })
         .catch((error) => console.log("error!", error));
 
@@ -41,6 +43,12 @@ const loadDetails = (petId) => {
     .catch((error) => console.log("error!", error));
 };
 
+const sorting = (array) => {
+    document.getElementById('sortByPriceBtn').addEventListener('click', () =>{
+    const sortedPets = array.sort((a, b) => b.price - a.price);
+    displayPets(sortedPets);
+    })
+}
 const showCountDown = (petId) => {
     const button = document.getElementById(`pet_${petId}`);
     const showTimer = document.getElementById('count-down');
@@ -119,7 +127,7 @@ const removeActiveClass = () => {
       btn.classList.remove('rounded-full', 'bg-[#0e7a811a]', 'border-[#0E7A81]', 'border-2');
     }
   };
-const likedDisplayPets = () =>{
+const likedDisplayPetsContainer = () =>{
     const likedPetsContainer = document.createElement('div');
     likedPetsContainer.classList.add('w-[25%]', 'border-2', 'rounded-xl', 'p-6');
     likedPetsContainer.innerHTML = `
@@ -184,11 +192,11 @@ const displayCategories = (categories) => {
     sortContainer.innerHTML = `
     <div class="flex justify-between my-8">
     <h2 class="text-2xl font-extrabold">Best Deal For you</h2>
-    <button class="btn bg-[#0E7A81] text-xl font-bold text-white">Sort by Price</button>
+    <button id="sortByPriceBtn" class="btn bg-[#0E7A81] text-xl font-bold text-white">Sort by Price</button>
     </div>
     `;
     document.getElementById('categoriesContainer').append(sortContainer);
 };
 
-loadPets();
 loadCategories();
+loadPets();
