@@ -74,6 +74,7 @@ const imageInserter = (link) => {
     `;
     document.getElementById('liked-container').append(imageContainer); 
 };
+// displays detailed information about a pet within a modal
 const displayDetail = (info) =>{
     const modalContainer = document.getElementById('my_modal_1');
     modalContainer.innerHTML = `
@@ -127,14 +128,16 @@ const removeActiveClass = () => {
       btn.classList.remove('rounded-full', 'bg-[#0e7a811a]', 'border-[#0E7A81]', 'border-2');
     }
   };
+// creates and displays the liked pets container section
 const likedDisplayPetsContainer = () =>{
     const likedPetsContainer = document.createElement('div');
-    likedPetsContainer.classList.add('w-[25%]', 'border-2', 'rounded-xl', 'p-3', 'lg:p-6');
+    likedPetsContainer.classList.add('w-[25%]', 'border-2', 'rounded-xl', 'p-3');
     likedPetsContainer.innerHTML = `
-    <div id="liked-container" class="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6"></div>
+    <div id="liked-container" class="grid grid-cols-1 lg:grid-cols-2 gap-3"></div>
     `
     document.getElementById('pets-container').append(likedPetsContainer);
 }
+// displays all pets in a grid layout, including their details and action buttons
 const displayPets = (petImages) => {
     const petsContainer = document.getElementById('pets');
     petsContainer.innerHTML="";
@@ -175,6 +178,7 @@ const displayPets = (petImages) => {
         petsContainer.append(petCard);
     });
 }
+// displays the categories of pets, each with a button to filter by that category
 const displayCategories = (categories) => {
     const categoriesId = document.getElementById('categories');
     const sortContainer = document.createElement("div");
