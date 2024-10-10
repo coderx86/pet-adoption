@@ -16,35 +16,70 @@
 </head>
 <body class="font-[Lato]">
     <header>
-        <nav class="w-[80%] flex justify-between items-center py-12 mx-auto">
-            <a class="flex items-center mb-6" href="index.html">
-                <img class="h-[24px] w-[29px]" src="images/logo.webp" alt="">
-                <h2 class="text-3xl font-extrabold ml-3">Peddy</h2>
-            </a>
-            <div>
-                <ul class="flex gap-8">
+        <nav class="w-[90%] md:w-[80%] flex justify-between items-center py-8 md:py-10 mx-auto">
+            <div class="navbar bg-base-100">
+                <div class="navbar-start">
+                  <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 6h16M4 12h8m-8 6h16" />
+                      </svg>
+                    </div>
+                    <ul
+                      tabindex="0"
+                      class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                      <li><a href="">Home</a></li>
+                      <li><a href="">Shop</a></li>
+                      <li><a href="">Contact</a></li>
+                    </ul>
+                  </div>
+                  <div class="hidden lg:block">
+                    <a class="flex items-center" href="index.html">
+                        <img class="h-[24px] w-[29px]" src="images/logo.webp" alt="">
+                        <h2 class="text-3xl font-extrabold ml-3">Peddy</h2>
+                    </a>
+                  </div>
+                </div>
+                <div class="navbar-center lg:hidden">
+                    <a class="flex items-center" href="index.html">
+                        <img class="h-[24px] w-[29px]" src="images/logo.webp" alt="">
+                        <h2 class="text-3xl font-extrabold ml-3">Peddy</h2>
+                    </a>
+                </div>
+                <div class="navbar-center hidden lg:flex">
+                  <ul class="menu menu-horizontal px-1">
                     <li><a href="">Home</a></li>
                     <li><a href="">Shop</a></li>
                     <li><a href="">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <i class="fa-regular fa-user border rounded-full p-4"></i>
+                  </ul>
+                </div>
+                <div class="navbar-end">
+                  <a href=""><i class=" btn fa-regular fa-user border rounded-full p-4"></i></a>
+                </div>
             </div>
         </nav>
     </header>
-    <main class="w-[80%] mx-auto mb-8">
+    <main class="w-[90%] lg:w-[80%] mx-auto mb-8">
         <!-- banner container -->
         <div class="flex flex-col items-center text-center">
             <div>
                 <h3 class="text-2xl font-bold"><span class="text-[#13131399]">Bringing Families Together </span>❤️‍</h3>
-                <h1 class="max-w-[752px] mx-auto text-7xl font-extrabold my-6">Your Path to Adoption Starts Here</h1>
+                <h1 class="max-w-[752px] mx-auto lg:text-7xl md:text-5xl text-4xl font-extrabold sm:my-6 my-5">Your Path to Adoption Starts Here</h1>
                 <p class="max-w-[752px] mx-auto">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
             </div>
             <div>
-                <button class="btn bg-[#0E7A81] text-xl text-white mt-8">View More</button>
+                <button class="btn bg-[#0E7A81] text-xl text-white sm:mt-8 mt-6">View More</button>
             </div>
-            <div class="mt-12 mb-24"><img src="images/pet.webp" alt=""></div>
+            <div class="sm:mt-12 mt-0 sm:mb-24 mb-6"><img src="images/pet.webp" alt=""></div>
         </div>
         <!-- adopt your best friend container -->
         <div class="text-center">
@@ -56,13 +91,13 @@
             <div id="categories" class="grid justify-between lg:flex grid-cols-2 gap-4 lg:gap-0"></div>
         </div>
         <!-- pets container -->
-         <div id="pets-container" class="flex gap-6">
+         <div id="pets-container" class="flex gap-4 lg:gap-6">
             <!-- loading spinner -->
             <div class="hidden w-[75%] min-h-[491px] flex justify-center bg-[#13131308] rounded-3xl" id="loading">
                 <span class="loading loading-bars loading-lg"></span>
             </div>
             <!-- pets info container -->
-            <div class="w-[75%] grid grid-cols-3 gap-6" id="pets"></div>
+            <div class="w-[75%] grid sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 lg:gap-6" id="pets"></div>
             <!-- modal 1-->
             <dialog id="my_modal_1" class="modal"></dialog>
             <!-- modal 2 -->
@@ -78,7 +113,7 @@
     </main>
     <footer class="bg-[#131313]">
         <!-- footer container -->
-        <div class="w-[80%] mx-auto  py-24 flex justify-between">
+        <div class="w-[90%] md:w-[80%] mx-auto  sm:py-24 py-16 sm:flex justify-between">
             <div>
                 <a class="flex items-center mb-6" href="index.html">
                     <img class="h-[24px] w-[29px]" src="images/logo.webp" alt="">
@@ -90,7 +125,7 @@
                     Email: info@yourdomain.com <br>
                     penings hours: 9.00 AM - 5.00 PM <br>
                 </p>
-                <div class="flex gap-6 text-2xl text-white">
+                <div class="flex gap-6 text-2xl text-white sm:mb-0 mb-6">
                     <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
                     <a href="https://x.com/" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
                     <a href="https://youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
@@ -98,7 +133,7 @@
                 </div>
             </div>
             <div>
-                <h3 class="text-xl font-bold text-white mb-8">Useful Links</h3>
+                <h3 class="text-xl font-bold text-white sm:mb-8 mb-4">Useful Links</h3>
                 <ul class="text-[#ffffffe6]">
                     <li><a href="">Home</a></li>
                     <li><a href="">About Us</a></li>
@@ -110,7 +145,7 @@
             <div>
                 <h3 class="text-xl font-bold text-white mb-8">Drop a Message</h3>
                 <div class="mb-4">
-                    <input class="rounded-xl bg-[#ffffff0d] p-4 text-white" type="email" placeholder="Enter your email">
+                    <input class="w-full rounded-xl bg-[#ffffff0d] p-4 text-white" type="email" placeholder="Enter your email">
                 </div>
                 <div>
                     <button class="btn bg-[#0E7A81] w-full font-bold text-xl text-white border-0">Subscribe</button>

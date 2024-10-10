@@ -80,7 +80,7 @@ const displayDetail = (info) =>{
 <div class="modal-box bg-white rounded-xl">
     <div>
         <div>
-            <img class="h-[220px] w-full rounded-lg object-cover mb-2" src="${info.image}" alt="">
+            <img class="sm:h-[220px] h-[160px] w-full rounded-lg object-cover mb-2" src="${info.image}" alt="">
         </div>
         <div>
             <div>
@@ -129,9 +129,9 @@ const removeActiveClass = () => {
   };
 const likedDisplayPetsContainer = () =>{
     const likedPetsContainer = document.createElement('div');
-    likedPetsContainer.classList.add('w-[25%]', 'border-2', 'rounded-xl', 'p-6');
+    likedPetsContainer.classList.add('w-[25%]', 'border-2', 'rounded-xl', 'p-3', 'lg:p-6');
     likedPetsContainer.innerHTML = `
-    <div id="liked-container" class="grid grid-cols-2 gap-6"></div>
+    <div id="liked-container" class="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6"></div>
     `
     document.getElementById('pets-container').append(likedPetsContainer);
 }
@@ -153,9 +153,9 @@ const displayPets = (petImages) => {
       }
     petImages.forEach(item => {
         const petCard = document.createElement('div');
-        petCard.classList.add('border-2', 'rounded-xl', 'p-6');
+        petCard.classList.add('border-2', 'rounded-xl', 'p-3');
         petCard.innerHTML = `
-        <img src="${item.image}" class="h-[160px] w-full rounded-lg mb-6 object-cover">
+        <img src="${item.image}" class="h-[160px] w-full rounded-lg mb-4 lg:mb-6 object-cover">
         <div>
             <div>
                 <h3 class="text-xl font-bold">${item.pet_name}</h3>
@@ -166,9 +166,9 @@ const displayPets = (petImages) => {
                 <hr class="my-4">
             </div>
             <div class="flex justify-between">
-                <button class="btn btn-outline btn-success" onclick="imageInserter('${item.image}')"><i class="fa-regular fa-thumbs-up"></i></button>
-                <button class="btn btn-outline btn-success font-bold" onclick = "showCountDown(${item.petId}); my_modal_2.showModal()" id="pet_${item.petId}">Adopt</button>
-                <button class="btn btn-outline btn-success font-bold" onclick="loadDetails(${item.petId}); my_modal_1.showModal()">Details</button>
+                <button class="btn btn-outline btn-success p-3" onclick="imageInserter('${item.image}')"><i class="fa-regular fa-thumbs-up"></i></button>
+                <button class="btn btn-outline btn-success font-bold p-3" onclick = "showCountDown(${item.petId}); my_modal_2.showModal()" id="pet_${item.petId}">Adopt</button>
+                <button class="btn btn-outline btn-success font-bold p-2" onclick="loadDetails(${item.petId}); my_modal_1.showModal()">Details</button>
             </div>
         </div>
         `;
@@ -183,16 +183,16 @@ const displayCategories = (categories) => {
         const buttonContainer = document.createElement("div");
         buttonContainer.classList.add('flex');
         buttonContainer.innerHTML = `
-        <button id="btn-${item.category}" onclick="loadCategoryPets('${item.category}')" class="btn text-2xl font-bold btn-outline border-gray-400 h-20 w-[250px] mx-auto btn-category">
-        <img src="${item.category_icon}" alt="">${item.category}s</button>
+        <button id="btn-${item.category}" onclick="loadCategoryPets('${item.category}')" class="btn sm:text-2xl text-xl font-bold btn-outline border-gray-400 h-20 sm:w-[250px] w-[150px] mx-auto btn-category">
+        <img class="size-10 sm:size-14" src="${item.category_icon}" alt="">${item.category}s</button>
         `;
         categoriesId.append(buttonContainer);
     });
 
     sortContainer.innerHTML = `
-    <div class="flex justify-between my-8">
-    <h2 class="text-2xl font-extrabold">Best Deal For you</h2>
-    <button id="sortByPriceBtn" class="btn bg-[#0E7A81] text-xl font-bold text-white">Sort by Price</button>
+    <div class="flex justify-between items-center my-8">
+    <h2 class="sm:text-2xl font-extrabold">Best Deal For you</h2>
+    <button id="sortByPriceBtn" class="btn bg-[#0E7A81] sm:text-xl font-bold text-white">Sort by Price</button>
     </div>
     `;
     document.getElementById('categoriesContainer').append(sortContainer);
