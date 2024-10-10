@@ -17,10 +17,10 @@
 <body class="font-[Lato]">
     <header>
         <nav class="w-[80%] flex justify-between items-center py-12 mx-auto">
-            <div class="flex gap-3 items-center">
-                <img src="images/logo.webp" alt="" class="h-[24px] w-[29px]">
-                <h2 class="text-3xl font-extrabold">Peddy</h2>
-            </div>
+            <a class="flex items-center mb-6" href="index.html">
+                <img class="h-[24px] w-[29px]" src="images/logo.webp" alt="">
+                <h2 class="text-3xl font-extrabold ml-3">Peddy</h2>
+            </a>
             <div>
                 <ul class="flex gap-8">
                     <li><a href="">Home</a></li>
@@ -76,7 +76,48 @@
             </dialog>
          </div>
     </main>
-    <footer></footer>
+    <footer class="bg-[#131313]">
+        <!-- footer container -->
+        <div class="w-[80%] mx-auto  py-24 flex justify-between">
+            <div>
+                <a class="flex items-center mb-6" href="index.html">
+                    <img class="h-[24px] w-[29px]" src="images/logo.webp" alt="">
+                    <h2 class="text-3xl font-extrabold ml-3 text-white">Peddy</h2>
+                </a>
+                <p class="text-[#ffffffe6] mb-6">
+                    Location: av. Washington 165, NY CA 54003 <br>
+                    Phone: +31 85 964 47 25 <br>
+                    Email: info@yourdomain.com <br>
+                    penings hours: 9.00 AM - 5.00 PM <br>
+                </p>
+                <div class="flex gap-6 text-2xl text-white">
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://x.com/" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-white mb-8">Useful Links</h3>
+                <ul class="text-[#ffffffe6]">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Animals</a></li>
+                    <li><a href="">Foundation</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-white mb-8">Drop a Message</h3>
+                <div class="mb-4">
+                    <input class="rounded-xl bg-[#ffffff0d] p-4 text-white" type="email" placeholder="Enter your email">
+                </div>
+                <div>
+                    <button class="btn bg-[#0E7A81] w-full font-bold text-xl text-white border-0">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 <script src="script/main.js"></script>
 </html>
