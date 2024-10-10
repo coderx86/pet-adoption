@@ -144,11 +144,10 @@ const displayPets = (petImages) => {
     if (petImages.length == 0) {
         petsContainer.classList.remove("grid");
         petsContainer.innerHTML = `
-        <div class="flex flex-col justify-center items-center bg-[#13131308] text-center rounded-3xl p-28">
-            <img src="images/error.webp" alt="">
-            <h1 class="font-extrabold text-4xl mt-6 mb-4">No Information Available</h1>
-            <p class="max-w-[760px] text-[#131313b3] mx-auto">It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
-             its layout. The point of using Lorem Ipsum is that it has a.</p>
+        <div class="flex flex-col justify-center items-center bg-[#13131308] text-center rounded-3xl sm:p-28 p-10">
+            <img class="sm:scale-100 scale-75" src="images/error.webp" alt="">
+            <h1 class="font-extrabold sm:text-4xl text-3xl sm:mt-6 mb-4">No Information Available</h1>
+            <p class="max-w-[760px] text-[#131313b3] mx-auto">We couldn't find the information you're looking for right now. Please check back later or explore other sections of our site for more details.</p>
         </div>
         `;
       } else {
