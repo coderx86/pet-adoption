@@ -94,7 +94,7 @@ const displayDetail = (info) =>{
                     </div>
                     <div>
                         <p class="text-[#131313b3]"><i class="fa-solid fa-calendar-days"></i> Birth: ${info.date_of_birth === undefined || info.date_of_birth === null ? 'Not available' : info.date_of_birth}</p>
-                        <p class="text-[#131313b3]"><i class="fa-solid fa-dollar-sign"></i> Price: ${info.price}$</p>
+                        <p class="text-[#131313b3]"><i class="fa-solid fa-dollar-sign"></i> Price: ${info.price === undefined || info.price === null ? 'Not available' : `${info.price}$`}</p>
                     </div>
                 </div>
             </div>
@@ -164,7 +164,7 @@ const displayPets = (petImages) => {
                 <p class="text-[#131313b3]"><i class="fa-solid fa-shapes"></i> Breed: ${item.breed === undefined || item.breed === null ? 'Not available' : item.breed}</p>
                 <p class="text-[#131313b3]"><i class="fa-solid fa-calendar-days"></i> Birth: ${item.date_of_birth === undefined || item.date_of_birth === null ? 'Not available' : item.date_of_birth}</p>
                 <p class="text-[#131313b3]"><i class="fa-solid fa-venus-mars"></i> Gender: ${item.gender === undefined || item.gender === null ? 'Unknown' : item.gender}</p>
-                <p class="text-[#131313b3]"><i class="fa-solid fa-dollar-sign"></i> Price: ${item.price}$</p>
+                <p class="text-[#131313b3]"><i class="fa-solid fa-dollar-sign"></i> Price: ${item.price === undefined || item.price === null ? 'Not available' : `${item.price}$`}</p>
                 <hr class="my-4">
             </div>
             <div class="flex justify-between">
